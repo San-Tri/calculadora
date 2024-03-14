@@ -18,16 +18,31 @@
 
         private void button1_Click(object sender, EventArgs e)
         {
-            operador = "+";
-            primero = double.Parse(tbxScreen.Text);
-            tbxScreen.Clear();
+            if (double.TryParse(tbxScreen.Text, out double result))
+            {
+                operador = "+";
+                primero = result;
+                tbxScreen.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un número antes de seleccionar un operador.");
+            }
         }
+
 
         private void button3_Click(object sender, EventArgs e)
         {
-            operador = "*";
-            primero = double.Parse(tbxScreen.Text);
-            tbxScreen.Clear();
+            if (double.TryParse(tbxScreen.Text, out double result))
+            {
+                operador = "*";
+                primero = result;
+                tbxScreen.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un número antes de seleccionar un operador.");
+            }
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -87,36 +102,42 @@
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            segundo = double.Parse(tbxScreen.Text);
-
-            double Sum;
-            double Res;
-            double Div;
-            double Mul;
-
-            switch (operador) 
+            if (double.TryParse(tbxScreen.Text, out double segundo))
             {
-                case "+":
-                    Sum = obj.Sumar((primero), (segundo));
-                    tbxScreen.Text = Sum.ToString();
-                    break;
+                double Sum;
+                double Res;
+                double Div;
+                double Mul;
 
-                case "-":
-                    Res = obj2.Restar((primero), (segundo));
-                    tbxScreen.Text = Res.ToString();
-                    break;
+                switch (operador)
+                {
+                    case "+":
+                        Sum = obj.Sumar(primero, segundo);
+                        tbxScreen.Text = Sum.ToString();
+                        break;
 
-                case "/":
-                    Div = obj3.Dividir((primero), (segundo));
-                    tbxScreen.Text = Div.ToString();
-                    break;
+                    case "-":
+                        Res = obj2.Restar(primero, segundo);
+                        tbxScreen.Text = Res.ToString();
+                        break;
 
-                case "*":
-                    Mul = obj4.Multiplicar((primero), (segundo));
-                    tbxScreen.Text = Mul.ToString();
-                    break;
+                    case "/":
+                        Div = obj3.Dividir(primero, segundo);
+                        tbxScreen.Text = Div.ToString();
+                        break;
+
+                    case "*":
+                        Mul = obj4.Multiplicar(primero, segundo);
+                        tbxScreen.Text = Mul.ToString();
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un número antes de presionar igual.");
             }
         }
+
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
@@ -133,16 +154,30 @@
 
         private void btnDividir_Click(object sender, EventArgs e)
         {
-            operador = "/";
-            primero = double.Parse(tbxScreen.Text);
-            tbxScreen.Clear();
+            if (double.TryParse(tbxScreen.Text, out double result))
+            {
+                operador = "/";
+                primero = result;
+                tbxScreen.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un número antes de seleccionar un operador.");
+            }
         }
 
         private void btnRestar_Click(object sender, EventArgs e)
         {
-            operador = "-";
-            primero = double.Parse(tbxScreen.Text);
-            tbxScreen.Clear();
+            if (double.TryParse(tbxScreen.Text, out double result))
+            {
+                operador = "-";
+                primero = result;
+                tbxScreen.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un número antes de seleccionar un operador.");
+            }
         }
     }
 }
